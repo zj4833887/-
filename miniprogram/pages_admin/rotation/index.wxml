@@ -1,0 +1,75 @@
+<view class="page" data-weui-theme="{{theme}}">
+  <view class="page__bd">
+    <view class="weui-form">
+      <view class="weui-cells__group weui-cells__group_form">
+        <view class="weui-cells__group weui-cells__group_form">
+          <view class="weui-cells__title">基本信息</view>
+          <view class="weui-cells weui-cells_form">
+            <view class="weui-cell weui-cell_active">
+              <view class="weui-cell__hd"><label class="weui-label">轮播图简介</label></view>
+              <view class="weui-cell__bd">
+                <input class="weui-input" bindinput="set" data-key="desc" value="{{shop.desc}}" placeholder="填写轮播图简介"
+                  placeholder-class="weui-input__placeholder" />
+              </view>
+            </view>
+            <!-- <view class="weui-cell weui-cell_active">
+              <view class="weui-cell__hd"><label class="weui-label">轮播图地址</label></view>
+              <view class="weui-cell__bd">
+                <input class="weui-input" data-key="location" bindinput="set" value="{{shop.location}}"
+                  placeholder="填写轮播图地址" placeholder-class="weui-input__placeholder" />
+              </view>
+            </view> -->
+          </view>
+        </view>
+      </view>
+    </view>
+    <view class="weui-cells">
+      <view class="weui-cell">
+        <view class="weui-cell__bd">
+          <view class="weui-uploader">
+            <view class="weui-uploader__hd">
+              <view class="weui-uploader__overview">
+                <view class="weui-uploader__title">轮播图管理</view>
+                <view class="weui-uploader__info">{{files.length}}/9</view>
+              </view>
+              <view class="weui-uploader__tips">
+                一次最多可以上传1张
+              </view>
+            </view>
+            <view class="weui-uploader__bd">
+              <view class="weui-uploader__files" id="uploaderFiles">
+                <view wx:for="{{shop.list}}" class="weui-uploader__file">
+                  <view class="option">
+                    <view data-index="{{index}}" bindtap="left" wx:if="{{index!=0}}" class="left">
+                      <image src="../../images/left.svg"></image>
+                    </view>
+                    <view data-index="{{index}}" bindtap="right" wx:if="{{index<list.images.length-1}}" class="right">
+                      <image src="../../images/right.svg"></image>
+                    </view>
+                  </view>
+                  <image class="weui-uploader__img" src="{{item.url}}" mode="aspectFill" />
+                  <view class="del" data-url="{{item}}" bindtap="delimage">
+                    <image src="../../images/del.svg"></image>
+                  </view>
+                  <view class="weui-cell weui-cell_active">
+                    <!-- <view class="weui-cell__hd"><label class="weui-label">轮播图地址</label></view> -->
+                      <view class="weui-cell__bd">
+                        <input data-index="{{index}}" class="weui-input"  bindinput="set_nav" value="{{item.nav}}"
+                          placeholder="填写轮播图地址" placeholder-class="weui-input__placeholder" />
+                      </view>
+                    </view>
+                  </view>
+                </view>
+                <view class="weui-uploader__input-box">
+                  <view class="weui-uploader__input" bindtap="chooseImage"></view>
+                </view>
+              </view>
+            </view>
+          </view>
+        </view>
+      </view>
+      <view class="btn">
+        <view class="weui-btn weui-btn_mini weui-btn_primary" bindtap="update">修改</view>
+      </view>
+    </view>
+  </view>

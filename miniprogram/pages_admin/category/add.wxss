@@ -1,0 +1,23 @@
+/* pages/category_add/category_add.wxss */.weui-cells{
+  font-size: 13px;
+}
+.weui-uploader__file {
+margin-left: 50rpx;
+}
+.weui-uploader__input-box{
+  margin-left: 50rpx;
+}
+.weui-uploader__input{
+  margin-left: 50rpx;
+}
+.weui-uploader__file{
+  position: relative;
+}
+.del{
+  position:absolute;
+  top: 0;
+  right: 0;
+  width: 30rpx;
+  height: 30rpx;
+  z-index: 999;
+}

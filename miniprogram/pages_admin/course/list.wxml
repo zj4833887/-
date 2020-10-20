@@ -1,0 +1,52 @@
+<view class='ticket-container'>
+    <scroll-view scroll-y bindscrolltoupper="upper" bindscrolltolower="lower" bindscroll="scroll" scroll-into-view="{{toView}}"
+      scroll-top="{{scrollTop}}">
+      <!--Tab布局-->
+      <view class='title'>
+        <view 
+        class="{{where.status==1?'title-sel-selected':''}}" bindtap='titleClick' data-idx='1'>
+          <text>正在进行</text>
+          <hr class="line-style"/>
+        </view>
+        <view 
+        class="{{where.status==0?'title-sel-selected':''}}" bindtap='titleClick' data-idx='0'>
+          <text>往期抽奖</text>
+          <hr class="line-style"/>
+        </view>
+      </view>
+ 
+      <!--内容布局-->
+      <view class="box"  wx:for="{{list}}" wx:key="index">
+        <view class="weui-form-preview__hd">
+				<label class="weui-form-preview__label">状态</label>
+				<em class="weui-form-preview__value">{{item.status?'正在进行':'已经结束'}}</em>
+      </view>
+      <view class="weui-form-preview__bd">
+				<view class="left">
+            <image src="{{item.swipter.images[0].url}}"></image>
+        </view>
+        <view class="right">
+          <view class="right-box">
+            <view>{{item.name}}</view>
+            <view class="price">￥{{item.price}}</view>
+          </view>
+          <!-- <view class="info">
+              {{item.info}}
+          </view> -->
+        </view>
+			</view>
+			<view class="weui-form-preview__ft">
+        <a wx:if="{{item.status}}" bindtap="down"
+        data-id="{{item._id}}"
+        class="weui-form-preview__btn weui-form-preview__btn_default">下架</a>
+        <a wx:else bindtap="up" data-id="{{item._id}}"
+        class="weui-form-preview__btn weui-form-preview__btn_default">上架</a>
+        <navigator url="./add?id={{item._id}}"
+        class="weui-form-preview__btn weui-form-preview__btn_primary">
+          编辑
+        </navigator>
+			</view>
+      </view>
+    </scroll-view>
+</view>
+<view wx:if="{{nomore}}">没有更多了</view>

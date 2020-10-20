@@ -1,0 +1,60 @@
+<view class="content">
+  <view class="navbar">
+    <block wx:for="{{current}}" wx:for-item="item" wx:for-index="index" wx:key="index">
+      <view bindtap="set_current" data-value="{{item.value}}"
+        class="{{['nav-item',(where.status==item.value)?'current':'']}}">{{''+item.text+''}}</view>
+    </block>
+  </view>
+  <view class="swiper-box" current="{{tabCurrentIndex}}" duration="300">
+    <block>
+      <view class="tab-content">
+        <view class="list-scroll-content" scroll-y="{{true}}">
+
+          <block wx:for="{{list}}" wx:for-item="item" wx:for-index="index" wx:key="index">
+            <view class="order-item">
+              <view class="i-top b-b"><text class="time">{{item.create_time}}</text><text class="state"
+                  style="{{'color:'+(item.stateTipColor)+';'}}">{{item.status==0?'待核销':'已完成'}}</text>
+              </view>
+              <block>
+                <block>
+                  <view class="goods-box-single">
+                    <image class="goods-img" src="{{item.products[0].main_image}}" mode="aspectFill"></image>
+                    <view class="right"><text class="title clamp">{{item.products[0].name}}</text>
+
+                      <view class="attr-box">{{item.products[0].info}}
+                      </view>
+                      <view class="price">{{item.products[0].price}}
+                      </view>
+                    </view>
+                  </view>
+                  <view class="attr-box">{{item.addressData.name}}</view>
+                  <view class="attr-box">{{item.addressData.mobile}}</view>
+                  <view class="attr-box">{{item.addressData.addressName}}</view>
+                </block>
+              </block>
+              <view class="price-box">共<view class="num">1</view>件商品 实付款<view class="price">{{item.total}}</view>
+              </view>
+
+              <block>
+                <view class="action-box b-t">
+                  <button
+                  bindtap="off" data-id="{{item._id}}"
+                   wx:if="{{item.status==0}}" class="action-btn recom">立即核销</button>
+                  <button
+                  bindtap="update" data-id="{{item._id}}"
+                   wx:else class="action-btn recom">标记未核销</button>
+                </view>
+              </block>
+            </view>
+          </block>
+
+          <uni-load-more status="{{tabItem.loadingType}}">
+          </uni-load-more>
+          <view wx:if="{{nomore}}">没有更多了</view>
+        </view>
+      </view>
+    </block>
+
+  </view>
+
+</view>

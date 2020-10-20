@@ -1,0 +1,21 @@
+<view class="ul">
+  <view class="{{item._id==id[0]?'on li':'li'}}" wx:for="{{list}}">
+    <view class="heard">
+      <view class="img">
+        <image src="{{item.bg_images[0].url}}"></image>
+      </view>
+      <view class="name">分类名称:
+        <view>{{item.name}}</view></view>
+      <view class="show">
+        状态:
+        <view>{{item.show?'首页显示':''}}</view>
+      </view>
+    </view>
+    <view class="btn">
+      <view class="kong"></view>
+      <view class="edit" data-id="{{item._id}}" bindtap="select">
+          选择
+      </view>
+    </view>
+  </view>
+</view>

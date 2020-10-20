@@ -1,0 +1,64 @@
+<view class="container">
+  <view class="user-section">
+    <image class="bg" src="/static/user-bg.jpg"></image>
+    <view class="user-info-box">
+      <view class="portrait-box">
+        <image class="portrait" src="{{user.avatarUrl||'/static/missing-face.png'}}"></image>
+      </view>
+      <view class="info-box"><text class="username">{{user.nickName||'游客'}}</text></view>
+    </view>
+    <view class="vip-card-box" wx:if="{{!user}}">
+      <image class="card-bg" src="/static/vip-card-bg.png" mode></image>
+      <button open-type="getUserInfo" bindgetuserinfo="add_user" class="b-btn">
+        一键注册
+      </button>
+      <view class="tit"><text class="yticon icon-iLinkapp-"></text></view><text class="e-m">DCloud
+        Union</text><text class="e-b">开通会员开发无bug 一测就上线</text>
+    </view>
+  </view>
+  <view class="cover-container" style="{{'transform:'+(coverTransform)+';'+('transition:'+(coverTransition)+';')}}">
+    <image class="arc" src="/static/arc.png"></image>
+    <!-- <view class="tj-sction">
+      <view class="tj-item"><text class="num">128.8</text><text>余额</text></view>
+      <view class="tj-item"><text class="num">0</text><text>优惠券</text></view>
+      <view class="tj-item"><text class="num">20</text><text>积分</text></view>
+    </view> -->
+    <view class="order-section">
+      <navigator class="order-item" url="../order/order" hover-class="common-hover"><text class="yticon icon-shouye"></text>
+        <view>全部订单</view>
+      </navigator>
+      <navigator url="../order/order?value=0" 
+      class="order-item" hover-class="common-hover"><text class="yticon icon-daifukuan"></text><text>待核销</text>
+      </navigator>
+      <navigator url="../order/order?value=1" 
+       class="order-item" hover-class="common-hover"><text class="yticon icon-yishouhuo"></text><text>已完成</text>
+      </navigator>
+    </view>
+    <view class="history-section icon">
+      <navigator url="">
+        <list-cell icon="icon-iconfontweixin" iconColor="#e07472" title="公司介绍"></list-cell>
+      </navigator>
+      <navigator url="">
+        <list-cell icon="icon-dizhi" iconColor="#5fcda2" title="联系我们"></list-cell>
+      </navigator>
+      <navigator>
+        <list-cell icon="icon-share" iconColor="#9789f7" title="邀请好友">
+        </list-cell>
+      </navigator>
+      <navigator>
+        <list-cell icon="icon-shoucang_xuanzhongzhuangtai" iconColor="#54b4ef" title="刮刮乐">
+        </list-cell>
+      </navigator>
+      <navigator>
+        <button class="btn" open-type="contact">
+          <list-cell icon="icon-share" iconColor="#9789f7" title="在线客服" tips="在线查询">
+          </list-cell>
+        </button>
+      </navigator>
+      <navigator url="../../pages_admin/index" wx:if="{{user.is_admin}}">
+        <list-cell icon="icon-shezhi1" iconColor="#e07472" title="设置">
+        </list-cell>
+      </navigator>
+    </view>
+  </view>
+</view>

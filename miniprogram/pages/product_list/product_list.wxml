@@ -1,0 +1,51 @@
+<view class="content">
+  <view class="navbar" style="{{'position:'+(headerPosition)+';'+('top:'+(headerTop)+';')}}">
+    <view bindtap="set" data-key="update_time" class="nav-item {{order.key=='update_time'?'current':''}}">综合排序</view>
+    <view bindtap="set" data-key="sales" class="nav-item {{order.key=='sales'?'current':''}}">销量优先</view>
+    <view bindtap="set_price" class="nav-item {{order.key=='price'?'current':''}}"><text>价格</text>
+      <view class="p-box"><text
+          class="{{['yticon icon-shang',order.key=='price'&&order.value=='asc'?'active':'']}}"></text><text
+          class="{{['yticon icon-shang xia',order.key=='price'&&order.value=='desc'?'active':'']}}"></text></view>
+    </view><text bindtap="show" class="cate-item yticon icon-fenlei1"></text>
+  </view>
+  <view class="goods-list">
+    <block wx:for="{{list}}" wx:for-item="item" wx:for-index="index" wx:key="index">
+      <view class="goods-item" data-id="{{item._id}}" bindtap="go">
+        <view class="image-wrapper">
+          <image src="{{item.main_image}}" mode="aspectFill"></image>
+        </view><text class="title clamp">{{item.name}}</text>
+        <view class="price-box">
+          <text class="price">{{item.price}}</text>
+          <text wx:if="{{item.sales}}">{{"已售 "+item.sales}}</text>
+          <text wx:else>已售0</text>
+        </view>
+      </view>
+    </block>
+  </view>
+</view>
+<uni-load-more  status="{{loadingType}}"></uni-load-more>
+  <view bindtap="hide_box" class="'cate-mask' {{show?'show':'none'}}">
+    <view
+      class="cate-content">
+      <scroll-view catchtap class="cate-list" scroll-y="{{true}}">
+        <block >
+          <view>
+            <!-- <view class="cate-item b-b two">{{item.name}}</view> -->
+            <block wx:for-item="tItem" wx:for-index="__i1__" wx:key="id">
+              <view  bindtap="setcate" data-cate_id="" 
+              class="cate-item b-b,{{!where.category?'active':''}}">
+                全部分类
+              </view>
+              <view wx:for="{{cate_list}}" 
+              class="cate-item b-b {{where.category==item._id?'active':''}}"
+              bindtap="setcate" data-cate_id="{{item._id}}"
+              >
+                {{item.name}}
+              </view>
+            </block>
+          </view>
+        </block>
+      </scroll-view>
+    </view>
+  </view>
+<view class="nonomore" wx:if="{{nomore}}">没有更多了</view>

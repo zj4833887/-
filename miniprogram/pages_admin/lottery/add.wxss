@@ -1,0 +1,4 @@
+/* pages/lottery_add/lottery_add.wxss */
+.weui-cells{
+  font-size: 13px;
+}

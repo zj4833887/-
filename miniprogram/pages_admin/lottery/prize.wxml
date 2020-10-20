@@ -1,0 +1,56 @@
+<view class="weui-form" style="padding:0">
+  <view class="weui-form__control-area">
+    <view class="weui-cells__group weui-cells__group_form" wx:for="{{price}}" wx:key="index">
+      <view class="box">
+        <view class="weui-cells__title">奖项{{index+1}}
+          
+        </view>
+        <view class="weui-cells__title del" data-index="index" bindtap="del">删除</view>
+      </view>
+      <view class="weui-cells weui-cells_form">
+        <view class="weui-cell weui-cell_active">
+          <view class="weui-cell__hd"><label class="weui-label">奖品等级</label></view>
+          <view class="weui-cell__bd">
+            <input value="{{item.name}}" data-index="{{index}}" data-key="name" bindinput="set" class="weui-input"
+              placeholder="请填写奖品等级" placeholder-class="weui-input__placeholder" />
+          </view>
+        </view>
+        <view class="weui-cell weui-cell_active">
+          <view class="weui-cell__hd">
+            <label class="weui-label">奖品名称</label>
+          </view>
+          <view class="weui-cell__bd">
+            <input value="{{item.item}}" data-index="{{index}}" data-key="item" bindinput="set" class="weui-input"
+              placeholder="填写奖品名称" placeholder-class="weui-input__placeholder" />
+          </view>
+        </view>
+        <view class="weui-cell weui-cell_active">
+          <view class="weui-cell__hd">
+            <label class="weui-label">奖品数量</label>
+          </view>
+          <view class="weui-cell__bd">
+            <input value="{{item.number}}" data-index="{{index}}" data-key="number" bindinput="set" class="weui-input"
+              placeholder="请填写奖品数量" type="number" placeholder-class="weui-input__placeholder" />
+          </view>
+        </view>
+        <view class="weui-cell weui-cell_active">
+          <view class="weui-cell__hd">
+            <label class="weui-label">抽奖概率</label>
+          </view>
+          <view class="weui-cell__bd">
+            <input value="{{item.probabil}}" data-index="{{index}}" data-key="probabil" bindinput="set"
+              class="weui-input" placeholder="请填写抽奖概率" type="digit" placeholder-class="weui-input__placeholder" />
+          </view>
+        </view>
+      </view>
+    </view>
+    <view class="weui-cell weui-cell_active" bindtap="add">
+      <view class="weui-cell__hd">
+        <label class="weui-label">新增</label>
+      </view>
+    </view>
+  </view>
+  <view class="weui-form__opr-area" bindtap="sumbit">
+    <a class="weui-btn weui-btn_primary">确定</a>
+  </view>
+</view>

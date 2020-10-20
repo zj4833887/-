@@ -1,0 +1,15 @@
+<view class="content b-t">
+  <block wx:for="{{addressList}}" wx:for-item="item" wx:for-index="index" wx:key="index">
+    <view class="list b-b" data-item="{{item}}" bindtap="chose">
+      <view class="wrapper">
+        <view class="address-box">
+          <block wx:if="{{item.defaule}}"><text class="tag">默认</text></block><text
+            class="address">{{item.addressName}}</text>
+        </view>
+        <view class="u-box"><text class="name">{{item.name}}</text><text class="mobile">{{item.mobile}}</text></view>
+      </view><navigator catchtap url="../addressManage/addressManage?id={{item._id}}"
+        class="yticon icon-bianji" ></navigator>
+    </view>
+  </block>
+  <navigator url="../addressManage/addressManage" class="add-btn" >新增地址</navigator>
+</view>

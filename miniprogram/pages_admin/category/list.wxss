@@ -1,0 +1,62 @@
+page{
+  background: #DCDCDC;
+}
+.ul{
+  font-size: 24rpx;
+}
+.li{
+  width: 90%;
+  height: 220rpx;
+  margin: 0 auto;
+  border: 1rpx solid #bbb;
+  border-radius: 20rpx;
+  margin-bottom: 20rpx;
+  margin-top: 20rpx;
+  background: #fff;
+  box-sizing: border-box;
+}
+.heard{
+  width: 100%;
+  height: 120rpx;
+  padding: 20rpx;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+}
+.heard .img{
+    flex: 2;
+}
+.heard .img image{
+  width: 100rpx;
+  height: 100rpx;
+}
+.name{
+    flex: 2;
+}
+.show{
+  flex: 3;
+  text-align: right;
+}
+.btn{
+  width: 300rpx;
+  height: 80rpx;
+  /* border: solid 1rpx #bbb; */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: absolute;
+  right: 42rpx;
+}
+.kong{
+  flex: 5;
+}
+.edit{
+  flex: 2;
+  width: 100rpx;
+  height: 50rpx;
+  border:1rpx solid #bbb;
+  border-radius: 10rpx;
+  margin-right: 30rpx;
+  text-align: center
+  ;
+}

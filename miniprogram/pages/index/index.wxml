@@ -1,0 +1,104 @@
+<view class="container">
+  <!-- <view class="mp-search-box"><input class="ser-input" type="text" value="输入关键字搜索" disabled="{{true}}" /></view> -->
+  <!-- //轮播图 -->
+  <view class="carousel-section">
+    <view class="titleNview-placing"></view>
+    <view class="titleNview-background" style="{{'background-color:'+(titleNViewBackground)+';'}}"></view>
+    <swiper class="carousel">
+      <block wx:for="{{res.rotation[0].list}}" wx:key="index">
+        <swiper-item class="carousel-item">
+          <image mode="scaleToFill" bindtap="goUrl" data-url="{{item.nav}}" src="{{item.url}}"></image>
+        </swiper-item>
+      </block>
+    </swiper>
+  </view>
+  <!-- //分类 -->
+  <!-- <view class="cate-section">
+    <view class="cate-item">
+      <image src="/static/temp/c3.png"></image><text>环球美食</text>
+    </view>
+    <view class="cate-item">
+      <image src="/static/temp/c5.png"></image><text>个护美妆</text>
+    </view>
+    <view class="cate-item">
+      <image src="/static/temp/c6.png"></image><text>营养保健</text>
+    </view>
+    <view class="cate-item">
+      <image src="/static/temp/c7.png"></image><text>家居厨卫</text>
+    </view>
+    <view class="cate-item">
+      <image src="/static/temp/c8.png"></image><text>速食生鲜</text>
+    </view>
+  </view> -->
+  <!-- //抽奖 -->
+  <view class="ad-1">
+    <image src="/static/temp/ad1.jpg" mode="scaleToFill"></image>
+  </view>
+  <!-- //团购 -->
+  <view class="f-header m-t">
+    <image src="/static/temp/h1.png"></image>
+    <view class="tit-box"><text class="tit">精品团购</text><text class="tit2">Boutique Group Buying</text></view><text
+      class="yticon icon-you"></text>
+  </view>
+
+  <view class="group-section">
+    <swiper class="g-swiper" duration="{{500}}">
+      <block wx:for="{{res.group}}" wx:for-item="item" wx:for-index="index" wx:key="index">
+        <block wx:if="{{index%2===0}}">
+          <swiper-item class="g-swiper-item">
+            <navigator url="../product/product?_id={{item._id}}" class="g-item left">
+              <image src="{{item.swipter.images[0].url}}" mode="aspectFill"></image>
+              <view class="t-box"><text class="title clamp">{{item.name}}</text>
+                <view class="price-box"><text class="price">{{"￥"+item.tuan_price}}</text><text
+                    class="m-price">￥{{item.price}}</text>
+                </view>
+                <view class="pro-box">
+                  <view class="progress-box"><progress percent="72" activeColor="#fa436a" active="{{true}}"
+                      stroke-width="6"></progress></view><text>{{item.tuan_people}}人成团</text>
+                </view>
+              </view>
+            </navigator>
+            <navigator url="../product/product?_id={{item._id}}" class="g-item right" wx:if="{{res.group[index+1]}}">
+              <image src="{{res.group[index+1].swipter.images[0].url}}" mode="aspectFill"></image>
+              <view class="t-box"><text class="title clamp">{{res.group[index+1].name}}</text>
+                <view class="price-box"><text class="price">{{"￥"+res.group[index+1].tuan_price}}</text><text
+                    class="m-price">￥{{res.group[index+1].price}}</text></view>
+                <view class="pro-box">
+                  <view class="progress-box"><progress percent="72" activeColor="#fa436a" active="{{true}}"
+                      stroke-width="6"></progress></view><text>{{res.group[index+1].tuan_people}}人成团</text>
+                </view>
+              </view>
+            </navigator>
+          </swiper-item>
+        </block>
+      </block>
+    </swiper>
+  </view>
+  <!-- 分类精选 -->
+  <view class="f-header m-t">
+    <image src="/static/temp/h1.png"></image>
+    <view class="tit-box"><text class="tit">分类精选</text><text class="tit2">Competitive Products For You</text></view>
+    <text class="yticon icon-you"></text>
+  </view>
+  <view class="hot-floor"wx:for="{{res.hot_floor}}" wx:key="index">
+    <view class="floor-img-box">
+      <image class="floor-img"
+        src="{{item.bg_images[0].url}}"
+        mode="aspectFill"></image>
+    </view>
+    <scroll-view class="floor-list" scroll-x="{{true}}">
+      <view class="scoll-wrapper">
+        <navigator url="../product/product?_id={{item._id}}" wx:for="{{item.course}}" wx:for-item="item" wx:for-index="index" wx:key="index">
+          <view class="floor-item">
+            <image src="{{item.swipter.images[0].url}}" mode="aspectFill"></image><text class="title clamp">{{item.title}}</text><text
+              class="price">{{"￥"+item.price}}</text>
+          </view>
+        </navigator>
+        <navigator  url="../product_list/product_list" 
+        open-type='switchTab'
+        class="more"><text>查看全部</text><text>More+</text>
+        </navigator>
+      </view>
+    </scroll-view>
+  </view>
+</view>

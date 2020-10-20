@@ -1,0 +1,52 @@
+<view class="page" data-weui-theme="{{theme}}">
+  <view class="weui-form" style="padding:0">
+    <view class="weui-form__control-area">
+      <view class="weui-cells__group weui-cells__group_form">
+        <view class="weui-cells__title">分类基本信息</view>
+        <view class="weui-cells weui-cells_form">
+          <view class="weui-cell weui-cell_active">
+            <view class="weui-cell__hd"><label class="weui-label">分类名称</label></view>
+            <view class="weui-cell__bd">
+              <input value="{{cat.name}}" data-key="name" bindinput="set" class="weui-input" placeholder="请填写分类名称"
+                placeholder-class="weui-input__placeholder" />
+            </view>
+          </view>
+          <view class="weui-cell weui-cell_active">
+            <view class="weui-cell__bd">首页状态</view>
+            <view class="weui-cell__ft" bindtap="set_show">
+              <label class="weui-switch-cp">
+                <checkbox class="weui-switch-cp__input" checked="{{cat.show}}" />
+                <view class="weui-switch-cp__box"></view>
+              </label>
+            </view>
+          </view>
+          <view class="weui-cell weui-cell_active weui-cell_select">
+              <view bindtap="go">
+                <view class="weui-select">分类图片</view>
+              </view>
+            </view>
+          <view class="weui-uploader__bd">
+              <view wx:if="{{cat.bg_images.length}}" class="weui-uploader__files" id="uploaderFiles">
+                <view class="weui-uploader__file">
+                  <image class="weui-uploader__img" src="{{cat.bg_images[0].url}}" mode="aspectFill" />
+                  <view class="del" data-url="{{cat.bg_images[0].url}}" bindtap="delimage">
+                    <image src="../../images/del.svg"></image>
+                  </view>
+                </view>
+              </view>
+              <view wx:else class="weui-uploader__input-box">
+                <view class="weui-uploader__input" bindtap="chooseImage"></view>
+              </view>
+          </view>
+        </view>
+      </view>
+    </view>
+    <view wx:if="{{cat._id}}" class="weui-form__opr-area" bindtap="update">
+      <a class="weui-btn weui-btn_primary">更新</a>
+    </view>
+    <view wx:else class="weui-form__opr-area" bindtap="submit">
+      <a class="weui-btn weui-btn_primary">确定</a>
+    </view>
+
+  </view>
+</view>

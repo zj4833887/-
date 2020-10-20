@@ -1,0 +1,36 @@
+page{
+  background: #ccc;
+  font-size: 12px;
+}
+.ul{
+  width: 720rpx;
+  margin: auto;
+  height: 100rpx;
+  margin-top: 30rpx;
+}
+.ul .li{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 30rpx;
+  box-sizing: border-box;
+  background: #fff;
+}
+.li .pic{
+  flex: 1;
+}
+.li .pic image{
+  width: 100rpx;
+  height: 100rpx;
+  border: 1rpx solid #333;
+  box-sizing: border-box;
+  border-radius: 50%;
+}
+.li .name{
+  flex: 3;
+  /* display: flex;
+  flex-wrap: wrap; */
+}
+.li .admin{
+  flex: 1;
+}

@@ -1,0 +1,16 @@
+<navigator url="../../admin/index">
+管理页面
+</navigator>
+<view>
+换行
+</view>
+<view bindtap="chose">
+  地图选点
+</view>
+<button bindtap="shenfenzheng">身份证正面识别</button>
+<ocr-navigator>
+      
+    </ocr-navigator>
+    <ocr-navigator bind:onSuccess="success" certificateType="idCard" opposite="{{true}}">
+      <button type="primary">身份证反面识别</button>
+    </ocr-navigator>

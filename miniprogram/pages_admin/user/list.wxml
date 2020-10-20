@@ -1,0 +1,24 @@
+<view>
+  <view class="ul">
+    <view class="li" wx:for="{{list}}">
+      <view class="pic">
+         <image src=" {{item.avatarUrl}}"></image>
+      </view>
+      <view class="name"> 
+        {{item.nickName}}
+        <view>
+          {{item.create_time}}
+        </view>
+        <view>
+          管理员
+        </view>
+      </view>
+      <view bindtap="set_admin" data-item="{{item}}" class="admin" wx:if="{{item.is_admin=='1'}}">
+          取消管理员
+      </view>
+      <view bindtap="set_admin" data-item="{{item}}" class="admin" wx:else>
+          设为管理员
+      </view>
+    </view>
+  </view>
+</view>
